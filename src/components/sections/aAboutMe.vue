@@ -3,9 +3,9 @@
     <div class="my-auto weight center">
       <h1 class="mb-0">Hi, Everyone! My name is
         <br>
-        <span class="text-primary">{{this.firstName}} {{this.lastName}}</span>
+        <span class="text-primary">Arga Ghulam Ahmad</span>
       </h1>
-      <p class="mb-5">{{this.description}}</p>
+      <p class="mb-5">A computer science student at Fasilkom, Universitas Indonesia. Who is eager to learn software development and try to develop an useful application. I am driven to be a software engineer.</p>
       <b-container>
         <b-row>
           <b-col v-for="social in socials" :key="social['name']">
@@ -30,10 +30,6 @@ export default {
   name: 'aAboutMe',
   data() {
     return {
-      firstName: '',
-      lastName: '',
-      email: '',
-      description: '',
       socials: [],
       loading: true,
     };
@@ -50,9 +46,6 @@ export default {
     axios
       .get('/data/about-me.json')
       .then((response) => {
-        // console.log(response.data);
-        this.firstName = response.data['first-name'];
-        this.lastName = response.data['last-name'];
         this.email = response.data.email;
         this.description = response.data.description;
       })
