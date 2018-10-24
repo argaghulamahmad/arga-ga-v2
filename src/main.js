@@ -30,12 +30,12 @@ firebase.initializeApp(config);
 firebase.auth.Auth.Persistence.NONE;
 
 const router = new VueRouter({
-  store,
   routes,
   mode: 'history',
 });
 
 const vue = new Vue({
+  store,
   router,
   render: h => h(App)
 })
