@@ -23,6 +23,7 @@ router.register('project_technology', ProjectTechnologyViewSet)
 router.register('experience_technology', ExperienceTechnologyViewSet)
 router.register('project', ProjectViewSet)
 router.register('experience', ExperienceViewSet)
+router.register('guest', GuestViewSet)
 
 urlpatterns = [
 

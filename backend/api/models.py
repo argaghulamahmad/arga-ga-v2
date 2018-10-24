@@ -114,6 +114,12 @@ class ExperienceTechnology(models.Model):
         return '%s' % self.name
 
 
+class Guest(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    profile_picture = models.URLField()
+
+
 class MessageSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Message
@@ -189,4 +195,10 @@ class ExperienceSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Experience
+        fields = '__all__'
+
+
+class GuestSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Guest
         fields = '__all__'

@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Message, Social, Skill, Activity, ProjectTechnology, ExperienceTechnology, Experience, Project, Achievement, Education, Interest, Contact
+
+from .models import *
 
 # Register your models here.
 admin.site.register(Message)
@@ -14,3 +15,4 @@ admin.site.register(Project)
 admin.site.register(Education)
 admin.site.register(Interest)
 admin.site.register(Contact)
+admin.site.register(Guest)

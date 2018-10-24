@@ -102,3 +102,11 @@ class ExperienceTechnologyViewSet(viewsets.ModelViewSet):
     """
     queryset = ExperienceTechnology.objects.all()
     serializer_class = ExperienceTechnologySerializer
+
+
+class GuestViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows guest to be viewed or edited.
+    """
+    queryset = Guest.objects.all()
+    serializer_class = GuestSerializer
