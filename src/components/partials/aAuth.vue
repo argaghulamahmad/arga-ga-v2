@@ -95,13 +95,9 @@
                     return cookieValue;
                 }
 
-                if (user) {
-                    this.user = user;
-                    this.actionUserName(this.user.displayName);
-                    this.actionUserEmail(this.user.email);
-                    this.actionUserPhotoUrl(this.user.photoURL);
-
-                    let guest = new Guest(this.user.displayName, this.user.email, this.user.photoURL);
+                if (this.getUserEmail() === '') {
+                    console.log("cek");
+                    let guest = new Guest(user.displayName, user.email, user.photoURL);
 
                     let csrfToken = getCookie('csrftoken');
                     let headers = {"X-CSRFToken": csrfToken};
@@ -113,6 +109,13 @@
                         .catch(function (error) {
                             console.log(error);
                         });
+                }
+
+                if (user) {
+                    this.user = user;
+                    this.actionUserName(this.user.displayName);
+                    this.actionUserEmail(this.user.email);
+                    this.actionUserPhotoUrl(this.user.photoURL);
                 }
                 this.loading = false;
             });
