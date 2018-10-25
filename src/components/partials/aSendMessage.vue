@@ -149,8 +149,34 @@ export default {
 
       let message = new Message(this.user.userName, this.user.userEmail, this.form.subject, this.form.level, this.form.message);
 
+
+      function getCookie(name) {
+          let cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+              let cookies = document.cookie.split(';');
+
+              let trim = (str) => {
+                  return str.toString().replace(/^([\s]*)|([\s]*)$/g, '');
+              };
+
+              for (let i = 0; i < cookies.length; i++) {
+                  let cookie = trim(cookies[i]);
+                  // Does this cookie string begin with the name we want?
+                  if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                  }
+              }
+          }
+          return cookieValue;
+      }
+
+      let csrfToken = getCookie('csrftoken');
+      let headers = {"X-CSRFToken": csrfToken};
+      console.log(csrfToken);
+
       axios
-        .post('/api/messages/', message)
+        .post('/api/messages/', message, {headers: headers})
         .then((response) => {
           _this.showModal();
           console.log(response);

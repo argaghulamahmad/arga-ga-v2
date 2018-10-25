@@ -74,9 +74,26 @@
                     }
                 };
 
-                //todo
-                console.log(document.cookie);
+                function getCookie(name) {
+                    let cookieValue = null;
+                    if (document.cookie && document.cookie !== '') {
+                        let cookies = document.cookie.split(';');
 
+                        let trim = (str) => {
+                            return str.toString().replace(/^([\s]*)|([\s]*)$/g, '');
+                        };
+
+                        for (let i = 0; i < cookies.length; i++) {
+                            let cookie = trim(cookies[i]);
+                            // Does this cookie string begin with the name we want?
+                            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                break;
+                            }
+                        }
+                    }
+                    return cookieValue;
+                }
 
                 if (user) {
                     this.user = user;
@@ -86,12 +103,16 @@
 
                     let guest = new Guest(this.user.displayName, this.user.email, this.user.photoURL);
 
-                    axios.post('/api/guest/', guest).then(function (response) {
+                    let csrfToken = getCookie('csrftoken');
+                    let headers = {"X-CSRFToken": csrfToken};
+                    console.log(csrfToken);
+
+                    axios.post('/api/guest/', guest, {headers: headers}).then(function (response) {
                         console.log(response);
                     })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
+                        .catch(function (error) {
+                            console.log(error);
+                        });
                 }
                 this.loading = false;
             });
