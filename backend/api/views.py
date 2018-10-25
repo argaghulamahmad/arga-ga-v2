@@ -111,7 +111,7 @@ class GuestViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows guest to be viewed or edited.
     """
-    queryset = Guest.objects.all()
+    queryset = Guest.objects.all().order_by('name')
     serializer_class = GuestSerializer
 
 
