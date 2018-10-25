@@ -15,7 +15,7 @@ class MessageViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows messages to be viewed or edited.
     """
-    queryset = Message.objects.all()
+    queryset = Message.objects.all().order_by('pk')
     serializer_class = MessageSerializer
 
 
@@ -23,7 +23,7 @@ class SocialViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows social links to be viewed or edited.
     """
-    queryset = Social.objects.all()
+    queryset = Social.objects.all().order_by('pk')
     serializer_class = SocialSerializer
 
 
@@ -31,7 +31,7 @@ class SkillViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows skill links to be viewed or edited.
     """
-    queryset = Skill.objects.all()
+    queryset = Skill.objects.all().order_by('pk')
     serializer_class = SkillSerializer
 
 
@@ -39,7 +39,7 @@ class InterestViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows interests to be viewed or edited.
     """
-    queryset = Interest.objects.all()
+    queryset = Interest.objects.all().order_by('pk')
     serializer_class = InterestSerializer
 
 
@@ -47,7 +47,7 @@ class ContactViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows contact to be viewed or edited.
     """
-    queryset = Contact.objects.all()
+    queryset = Contact.objects.all().order_by('pk')
     serializer_class = ContactSerializer
 
 
@@ -55,7 +55,7 @@ class AchievementViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows achievement to be viewed or edited.
     """
-    queryset = Achievement.objects.all()
+    queryset = Achievement.objects.all().order_by('pk')
     serializer_class = AchievementSerializer
 
 
@@ -71,7 +71,7 @@ class EducationViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows education to be viewed or edited.
     """
-    queryset = Education.objects.all()
+    queryset = Education.objects.all().order_by('pk')
     serializer_class = EducationSerializer
 
 
@@ -79,7 +79,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows project to be viewed or edited.
     """
-    queryset = Project.objects.all()
+    queryset = Project.objects.all().order_by('pk')
     serializer_class = ProjectSerializer
 
 
@@ -87,7 +87,7 @@ class ExperienceViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows experience to be viewed or edited.
     """
-    queryset = Experience.objects.all()
+    queryset = Experience.objects.all().order_by('pk')
     serializer_class = ExperienceSerializer
 
 
@@ -119,5 +119,5 @@ class WorkflowViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows workflow to be viewed or edited.
     """
-    queryset = Workflow.objects.all()
+    queryset = Workflow.objects.all().order_by('pk')
     serializer_class = WorkflowSerializer
