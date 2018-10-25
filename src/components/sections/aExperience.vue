@@ -11,7 +11,7 @@
           <div class="resume-content mr-auto">
             <h3 class="mb-0 weight">{{experience.title}}</h3>
             <div class="subheading mb-3 weight">
-              <a :href="experience['company-url']"
+              <a :href="experience.company_url"
                  target="_blank">{{experience.company}}</a>
             </div>
             <!--<div class="div&#45;&#45;stacks">-->
