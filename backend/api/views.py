@@ -19,7 +19,7 @@ class MessageViewSet(viewsets.ModelViewSet):
     serializer_class = MessageSerializer
 
 
-class SocialViewSet(viewsets.ModelViewSet):
+class SocialViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows social links to be viewed or edited.
     """
@@ -27,7 +27,7 @@ class SocialViewSet(viewsets.ModelViewSet):
     serializer_class = SocialSerializer
 
 
-class SkillViewSet(viewsets.ModelViewSet):
+class SkillViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows skill links to be viewed or edited.
     """
@@ -35,7 +35,7 @@ class SkillViewSet(viewsets.ModelViewSet):
     serializer_class = SkillSerializer
 
 
-class InterestViewSet(viewsets.ModelViewSet):
+class InterestViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows interests to be viewed or edited.
     """
@@ -43,7 +43,7 @@ class InterestViewSet(viewsets.ModelViewSet):
     serializer_class = InterestSerializer
 
 
-class ContactViewSet(viewsets.ModelViewSet):
+class ContactViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows contact to be viewed or edited.
     """
@@ -51,7 +51,7 @@ class ContactViewSet(viewsets.ModelViewSet):
     serializer_class = ContactSerializer
 
 
-class AchievementViewSet(viewsets.ModelViewSet):
+class AchievementViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows achievement to be viewed or edited.
     """
@@ -59,7 +59,7 @@ class AchievementViewSet(viewsets.ModelViewSet):
     serializer_class = AchievementSerializer
 
 
-class ActivityViewSet(viewsets.ModelViewSet):
+class ActivityViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows activity to be viewed or edited.
     """
@@ -67,7 +67,7 @@ class ActivityViewSet(viewsets.ModelViewSet):
     serializer_class = ActivitySerializer
 
 
-class EducationViewSet(viewsets.ModelViewSet):
+class EducationViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows education to be viewed or edited.
     """
@@ -75,7 +75,7 @@ class EducationViewSet(viewsets.ModelViewSet):
     serializer_class = EducationSerializer
 
 
-class ProjectViewSet(viewsets.ModelViewSet):
+class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows project to be viewed or edited.
     """
@@ -83,7 +83,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
     serializer_class = ProjectSerializer
 
 
-class ExperienceViewSet(viewsets.ModelViewSet):
+class ExperienceViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows experience to be viewed or edited.
     """
@@ -91,7 +91,7 @@ class ExperienceViewSet(viewsets.ModelViewSet):
     serializer_class = ExperienceSerializer
 
 
-class ProjectTechnologyViewSet(viewsets.ModelViewSet):
+class ProjectTechnologyViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows project technology to be viewed or edited.
     """
@@ -99,7 +99,7 @@ class ProjectTechnologyViewSet(viewsets.ModelViewSet):
     serializer_class = ProjectTechnologySerializer
 
 
-class ExperienceTechnologyViewSet(viewsets.ModelViewSet):
+class ExperienceTechnologyViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows experience technology to be viewed or edited.
     """
@@ -115,7 +115,7 @@ class GuestViewSet(viewsets.ModelViewSet):
     serializer_class = GuestSerializer
 
 
-class WorkflowViewSet(viewsets.ModelViewSet):
+class WorkflowViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows workflow to be viewed or edited.
     """
