@@ -43,6 +43,17 @@
                     }
 
                     this.guests.forEach((guest) => this.guests_data.push(new Guest(createImg(guest.profile_picture), guest.name, guest.email)))
+
+                    //remove duplicates by guest email
+                    let temp = {};
+                    console.log(this.guests_data);
+                    for (let i = 0, len = this.guests_data.length; i < len; i++) {
+                        temp[this.guests_data[i].email] = this.guests_data[i];
+                    }
+                    this.guests_data = [];
+                    for (let key in temp) {
+                        this.guests_data.push(temp[key])
+                    }
                 })
                 .catch((e) => {
                     console.log(e);
