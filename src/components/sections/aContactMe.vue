@@ -15,9 +15,13 @@
                         <br>
                         <aContact></aContact>
                     </b-tab>
-                    <b-tab title="Guest">
+                    <b-tab title="Guests">
                         <br>
                         <aGuests></aGuests>
+                    </b-tab>
+                    <b-tab title="Messages">
+                        <br>
+                        <aMessages></aMessages>
                     </b-tab>
                 </b-tabs>
             </bCard>
@@ -34,6 +38,7 @@
     import aSendMessage from '../partials/aSendMessage';
     import aContact from '../partials/aContact';
     import aGuests from '../partials/aGuests'
+    import aMessages from '../partials/aMessages'
 
     export default {
         name: 'aContactMe',
@@ -42,6 +47,7 @@
             aSendMessage,
             aContact,
             aGuests,
+            aMessages,
             bTab,
             bTabs,
             bCard,

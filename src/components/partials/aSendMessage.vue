@@ -147,7 +147,7 @@ export default {
           }
         };
 
-      let message = new Message(this.user.userName, this.user.userEmail, this.form.subject, this.form.level, this.form.message);
+      let message = new Message(this.user.userName, this.user.userEmail, this.form.subject, this.form.message, this.form.level);
 
 
       function getCookie(name) {
