@@ -10,6 +10,9 @@ class Message(models.Model):
     body = models.TextField()
     level = models.CharField(max_length=20)
 
+    def __str__(self):
+        return '%s send %s' % (self.sender_name, self.subject)
+
 
 class Social(models.Model):
     name = models.CharField(max_length=200)
