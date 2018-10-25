@@ -8,7 +8,7 @@ class Message(models.Model):
     sender_email = models.EmailField()
     subject = models.CharField(max_length=200)
     body = models.TextField()
-    level = models.CharField(max_length=10)
+    level = models.CharField(max_length=20)
 
 
 class Social(models.Model):
