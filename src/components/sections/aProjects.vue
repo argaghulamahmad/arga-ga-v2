@@ -7,7 +7,7 @@
         <div class="resume-content mr-auto">
           <h3 class="mb-0 weight">{{project.name}}</h3>
           <div class="subheading mb-3 weight">
-            <a :href="project['url']" target="_blank">
+            <a :href="project.project_url" target="_blank">
             {{project.project_url}}
             </a>
           </div>
