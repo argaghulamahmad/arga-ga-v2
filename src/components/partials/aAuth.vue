@@ -95,13 +95,11 @@
                     return cookieValue;
                 }
 
-                if (this.getUserEmail() === '') {
-                    console.log("cek");
+                if (user !== null && this.getUserEmail() === '') {
                     let guest = new Guest(user.displayName, user.email, user.photoURL);
 
                     let csrfToken = getCookie('csrftoken');
                     let headers = {"X-CSRFToken": csrfToken};
-                    console.log(csrfToken);
 
                     axios.post('/api/guest/', guest, {headers: headers}).then(function (response) {
                         console.log(response);
