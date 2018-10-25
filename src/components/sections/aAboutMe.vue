@@ -8,9 +8,9 @@
       <p class="mb-5">A computer science student at Fasilkom, Universitas Indonesia. Who is eager to learn software development and try to develop an useful application. I am driven to be a software engineer.</p>
       <b-container>
         <b-row>
-          <b-col v-for="social in socials" :key="social['name']">
-            <a :href="social['url']" target="_blank">
-              <i :class="getSocialIconClass(social['name'])"></i>
+          <b-col v-for="social in socials" :key="social.name">
+            <a :href="social.link" target="_blank">
+              <i :class="getSocialIconClass(social.name)"></i>
             </a>
           </b-col>
         </b-row>
@@ -44,29 +44,10 @@ export default {
   },
   beforeCreate() {
     axios
-      .get('/data/about-me.json')
+      .get('/api/social/')
       .then((response) => {
-        this.email = response.data.email;
-        this.description = response.data.description;
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-
-    axios
-      .get('/data/social.json')
-      .then((response) => {
-        // console.log(response.data);
-        const data = response.data;
-        const socials = [];
-        Object.keys(data).map((key) => {
-          const social = data[key];
-          social.id = key;
-          socials.push(social);
-        });
-        this.socials = socials;
+        this.socials = response.data;
         this.loading = false;
-        // console.log(this.socials);
       })
       .catch((e) => {
         console.log(e);

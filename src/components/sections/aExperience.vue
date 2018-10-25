@@ -5,34 +5,37 @@
       <div v-for="(experience, index) in experiences" :key="index">
         <div class="resume-item d-flex flex-column flex-md-row mb-5">
           <div>
-            <div class="image"><img :src="experience['company-logo']"
-                                    :alt="experience['company']"></div>
+            <div class="image"><img :src="experience.company_logo"
+                                    :alt="experience.company"></div>
           </div>
           <div class="resume-content mr-auto">
-            <h3 class="mb-0 weight">{{experience['title']}}</h3>
+            <h3 class="mb-0 weight">{{experience.title}}</h3>
             <div class="subheading mb-3 weight">
               <a :href="experience['company-url']"
-                 target="_blank">{{experience['company']}}</a>
+                 target="_blank">{{experience.company}}</a>
             </div>
-            <div class="div--stacks">
-              <div class="tag" v-for="(stack, index) in experience['stacks']" :key="index">
-                {{stack}}
-              </div>
-            </div>
+            <!--<div class="div&#45;&#45;stacks">-->
+              <!--<div class="tag" v-for="(stack, index) in experience['stacks']" :key="index">-->
+                <!--{{stack}}-->
+              <!--</div>-->
+            <!--</div>-->
             <br>
-            <ul>
-              <li v-for="(desc, index) in experience['description']" :key="index" class="weight">
-                {{desc}}
-              </li>
-            </ul>
+            <!--<ul>-->
+              <!--<li v-for="(desc, index) in experience['description']" :key="index" class="weight">-->
+                <!--{{desc}}-->
+              <!--</li>-->
+            <!--</ul>-->
+            <pre style="white-space: pre-line; word-wrap: break-word; text-align: justify;">
+            {{experience.description}}
+          </pre>
           </div>
           <div class="resume-date text-md-right weight">
             <span class="text-primary">
-              {{experience['location']}}
+              {{experience.location}}
             </span>
             <br>
             <span class="text-primary">
-              {{experience['from']}} - {{experience['to']}}
+              {{experience.start_date}} - {{experience.end_date}}
             </span>
           </div>
           <br>
@@ -62,16 +65,10 @@ export default {
   },
   beforeCreate() {
     axios
-      .get('/data/experience.json')
+      .get('/api/experience/')
       .then((response) => {
-        const data = response.data;
-        const experiences = [];
-        Object.keys(data).map((key) => {
-          const experience = data[key];
-          experience.id = key;
-          experiences.push(experience);
-        });
-        this.experiences = experiences.reverse();
+        this.experiences = response.data;
+        this.experiences.reverse();
         this.loading = false;
       })
       .catch((e) => {

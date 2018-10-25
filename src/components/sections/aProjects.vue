@@ -5,27 +5,30 @@
       <div v-for="(project, index) in projects" :key="index"
            class="resume-item d-flex flex-column flex-md-row mb-5">
         <div class="resume-content mr-auto">
-          <h3 class="mb-0 weight">{{project['name']}}</h3>
+          <h3 class="mb-0 weight">{{project.name}}</h3>
           <div class="subheading mb-3 weight">
             <a :href="project['url']" target="_blank">
-            {{project['url']}}
+            {{project.project_url}}
             </a>
           </div>
-          <div class="div--stacks">
+          <!--<div class="div&#45;&#45;stacks">
             <div class="tag" v-for="(stack, index) in project['stacks']" :key="index">
               {{stack}}
             </div>
-          </div>
+          </div>-->
           <br>
-          <ul>
+          <!--<ul>
             <li v-for="(desc, index) in project['description']" :key="index"
                 class="weight">
               {{desc}}
             </li>
-          </ul>
+          </ul>-->
+          <pre style="white-space: pre-line; word-wrap: break-word; text-align: justify;">
+            {{project.description}}
+          </pre>
         </div>
         <div class="resume-date text-md-right weight">
-          <span class="text-primary">{{project['from']}} - {{project['to']}}</span>
+          <span class="text-primary">{{project.start_date}} - {{project.end_date}}</span>
         </div>
       </div>
     </div>
@@ -52,16 +55,10 @@ export default {
   },
   beforeCreate() {
     axios
-      .get('/data/projects.json')
+      .get('/api/project/')
       .then((response) => {
-        const data = response.data;
-        const projects = [];
-        Object.keys(data).map((key) => {
-          const project = data[key];
-          project.id = key;
-          projects.push(project);
-        });
-        this.projects = projects;
+        this.projects = response.data;
+        this.projects.reverse();
         this.loading = false;
       })
       .catch((e) => {

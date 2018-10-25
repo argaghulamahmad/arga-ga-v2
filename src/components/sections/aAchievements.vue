@@ -5,7 +5,7 @@
       <ul class="fa-ul mb-0 weight">
         <li v-for="(achievement, index) in achievements" :key="index">
           <i class="fa-li fa fa-trophy text-warning"></i>
-          {{achievement['title']}}
+          {{achievement.title}}
         </li>
       </ul>
     </div>
@@ -32,17 +32,9 @@ export default {
   },
   beforeCreate() {
     axios
-      .get('/data/achievements.json')
+      .get('/api/achievement/')
       .then((response) => {
-        const data = response.data;
-        // console.log(data);
-        const achievements = [];
-        Object.keys(data).map((key) => {
-          const item = data[key];
-          item.id = key;
-          achievements.push(item);
-        });
-        this.achievements = achievements;
+        this.achievements = response.data;
         this.loading = false;
       })
       .catch((e) => {

@@ -23,6 +23,16 @@
                       placeholder="Enter name" disabled>
         </b-form-input>
       </b-form-group>
+      <b-form-group id="formInputGroup5"
+                    label="Subject:"
+                    label-for="formInput5">
+        <b-form-input id="formInput5"
+                      v-model="form.subject"
+                      type="text"
+                      required
+                      placeholder="Enter message subject">
+        </b-form-input>
+      </b-form-group>
       <b-form-group id="formInputGroup3"
                     label="Is Important:"
                     label-for="formInput3">
@@ -90,6 +100,7 @@ export default {
         userEmail: '',
       },
       form: {
+        subject: '',
         message: '',
         level: null,
       },
@@ -125,16 +136,24 @@ export default {
     onSubmit(evt) {
       evt.preventDefault();
       const _this = this;
+
+      let Message = class {
+          constructor(sender_name, sender_email, subject, body, level) {
+            this.sender_name = sender_name;
+            this.sender_email = sender_email;
+            this.subject = subject;
+            this.body = body;
+            this.level = level;
+          }
+        };
+
+      let message = new Message(this.user.userName, this.user.userEmail, this.form.subject, this.form.level, this.form.message);
+
       axios
-        .post('/messages.json', {
-          userName: this.userName,
-          userEmail: this.userEmail,
-          level: this.form.level,
-          message: this.form.message,
-        })
+        .post('/api/messages/', message)
         .then((response) => {
           _this.showModal();
-          // console.log(response);
+          console.log(response);
         })
         .catch((error) => {
           console.log(error);

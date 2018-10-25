@@ -1,11 +1,15 @@
-from django.views.decorators.cache import never_cache
-from django.views.generic import TemplateView
+from django.shortcuts import render
 from rest_framework import viewsets
 
 from .models import *
 
+response = {}
+
+
 # Serve Vue Application
-index_view = never_cache(TemplateView.as_view(template_name='index.html'))
+
+def index(request):
+    return render(request, 'index.html', response)
 
 
 class MessageViewSet(viewsets.ModelViewSet):
@@ -110,3 +114,11 @@ class GuestViewSet(viewsets.ModelViewSet):
     """
     queryset = Guest.objects.all()
     serializer_class = GuestSerializer
+
+
+class WorkflowViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows workflow to be viewed or edited.
+    """
+    queryset = Workflow.objects.all()
+    serializer_class = WorkflowSerializer

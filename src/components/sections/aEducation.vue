@@ -5,33 +5,36 @@
       <div v-for="(education, index) in educations" :key="index">
         <div class="resume-item d-flex flex-column flex-md-row mb-5">
           <div>
-            <div class="image"><img :src="education['school-logo']"
-                                    :alt="education['school']"></div>
+            <div class="image"><img :src="education.school_logo"
+                                    :alt="education.school"></div>
           </div>
           <div class="resume-content mr-auto">
             <h3 class="mb-0 weight">
-              <a :href="education['school-url']" target="_blank">{{education['school']}}</a>
+              <a :href="education.school_url" target="_blank">{{education.school}}</a>
             </h3>
-            <div class="subheading mb-3 weight">{{education['degree']}}</div>
-            <div class="div--activities">
-              <div class="tag" v-for="(activity, index) in education['activities']" :key="index">
-                {{activity}}
-              </div>
-            </div>
+            <div class="subheading mb-3 weight">{{education.degree}}</div>
+            <!--<div class="div&#45;&#45;activities">-->
+              <!--<div class="tag" v-for="(activity, index) in education['activities']" :key="index">-->
+                <!--{{activity}}-->
+              <!--</div>-->
+            <!--</div>-->
             <br>
-            <ul>
-              <li v-for="(desc, index) in education['description']" :key="index" class="weight">
-                {{desc}}
-              </li>
-            </ul>
+            <!--<ul>-->
+              <!--<li v-for="(desc, index) in education['description']" :key="index" class="weight">-->
+                <!--{{desc}}-->
+              <!--</li>-->
+            <!--</ul>-->
+            <pre style="white-space: pre-line; word-wrap: break-word; text-align: justify;">
+              {{education.description}}
+          </pre>
           </div>
           <div class="resume-date text-md-right">
           <span class="text-primary weight">
-              {{education['location']}}
+              {{education.location}}
             </span>
             <br>
             <span class="text-primary weight">
-            {{education['from']}} - {{education['to']}}
+            {{education.start_date}} - {{education.end_date}}
           </span>
           </div>
         </div>
@@ -61,16 +64,9 @@ export default {
   },
   beforeCreate() {
     axios
-      .get('/data/education.json')
+      .get('/api/education/')
       .then((response) => {
-        const data = response.data;
-        const educations = [];
-        Object.keys(data).map((key) => {
-          const education = data[key];
-          education.id = key;
-          educations.push(education);
-        });
-        this.educations = educations.reverse();
+        this.educations = response.data;
         this.loading = false;
       })
       .catch((e) => {

@@ -120,6 +120,10 @@ class Guest(models.Model):
     profile_picture = models.URLField()
 
 
+class Workflow(models.Model):
+    content = models.CharField(max_length=200)
+
+
 class MessageSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Message
@@ -201,4 +205,10 @@ class ExperienceSerializer(serializers.HyperlinkedModelSerializer):
 class GuestSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Guest
+        fields = '__all__'
+
+
+class WorkflowSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Workflow
         fields = '__all__'

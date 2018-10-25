@@ -8,7 +8,7 @@
           <ul class="list-inline list-icons">
             <li v-for="(item, index) in programmingLanguagesTools" :key="index"
                 class="list-inline-item">
-              <i :class="item['icon-class']"></i>
+              <i :class="item.icon_class"></i>
             </li>
           </ul>
         </div>
@@ -16,7 +16,7 @@
         <ul class="fa-ul mb-0">
           <li v-for="(workflow, index) in workflows" :key="index">
             <i class="fa-li fa fa-check"></i>
-            {{workflow['title']}}
+            {{workflow.content}}
           </li>
         </ul>
       </div>
@@ -45,32 +45,20 @@ export default {
   },
   beforeCreate() {
     axios
-      .get('/data/skills/programming-languages-tools.json')
+      .get('/api/skill/')
       .then((response) => {
-        const data = response.data;
-        const programmingLanguagesTools = [];
-        Object.keys(data).map((key) => {
-          const item = data[key];
-          item.id = key;
-          programmingLanguagesTools.push(item);
-        });
-        this.programmingLanguagesTools = programmingLanguagesTools;
+        this.programmingLanguagesTools = response.data;
+        console.log(this.programmingLanguagesTools);
+        this.loading = false;
       })
       .catch((e) => {
         console.log(e);
       });
 
     axios
-      .get('/data/skills/workflows.json')
+      .get('/api/workflow/')
       .then((response) => {
-        const data = response.data;
-        const workflows = [];
-        Object.keys(data).map((key) => {
-          const item = data[key];
-          item.id = key;
-          workflows.push(item);
-        });
-        this.workflows = workflows;
+        this.workflows = response.data;
         this.loading = false;
       })
       .catch((e) => {

@@ -24,11 +24,12 @@ router.register('experience_technology', ExperienceTechnologyViewSet)
 router.register('project', ProjectViewSet)
 router.register('experience', ExperienceViewSet)
 router.register('guest', GuestViewSet)
+router.register('workflow', WorkflowViewSet)
 
 urlpatterns = [
 
     # http://localhost:8000/
-    path('', index_view, name='index'),
+    path('', index, name='index'),
 
     # http://localhost:8000/api/<router-viewsets>
     path('api/', include(router.urls)),

@@ -3,7 +3,7 @@
     <h2 class="mb-5">Contact</h2>
     <b-list-group>
       <b-list-group-item v-for="(contact, index) in contacts" :key="index">
-        <i :class="iconClass(contact.icon)"></i>
+        <i :class="iconClass(contact.icon_class)"></i>
         {{contact.content}}
       </b-list-group-item>
     </b-list-group>
@@ -35,16 +35,9 @@ export default {
   },
   beforeCreate() {
     axios
-      .get('/data/contact-me/contact.json')
+      .get('/api/contact/')
       .then((response) => {
-        const data = response.data;
-        const contacts = [];
-        Object.keys(data).map((key) => {
-          const item = data[key];
-          item.id = key;
-          contacts.push(item);
-        });
-        this.contacts = contacts;
+        this.contacts = response.data;
       })
       .catch((e) => {
         console.log(e);

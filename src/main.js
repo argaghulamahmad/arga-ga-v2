@@ -17,7 +17,6 @@ Vue.config.productionTip = false
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
 
-axios.defaults.baseURL = 'https://arga-ga-backend.firebaseio.com/';
 axios.defaults.headers.get.Accepts = 'application/json';
 
 const config = {

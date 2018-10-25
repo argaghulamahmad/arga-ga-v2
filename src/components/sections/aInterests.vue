@@ -3,7 +3,7 @@
     <div class="my-auto">
       <h2 class="mb-5">Interests</h2>
       <ul class="weight">
-        <li v-for="(interest, index) in interests" :key="index">{{interest['title']}}</li>
+        <li v-for="(interest, index) in interests" :key="index">{{interest.content}}</li>
       </ul>
     </div>
     <aSpinner v-if="loading"></aSpinner>
@@ -29,16 +29,9 @@ export default {
   },
   beforeCreate() {
     axios
-      .get('/data/interests.json')
+      .get('/api/interest/')
       .then((response) => {
-        const data = response.data;
-        const interests = [];
-        Object.keys(data).map((key) => {
-          const interest = data[key];
-          interest.id = key;
-          interests.push(interest);
-        });
-        this.interests = interests;
+        this.interests = response.data;
         this.loading = false;
       })
       .catch((e) => {
