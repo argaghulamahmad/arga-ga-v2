@@ -52,8 +52,8 @@ class Achievement(models.Model):
 
 class Education(models.Model):
     degree = models.CharField(max_length=200)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    start_date = models.CharField(max_length=20)
+    end_date = models.CharField(max_length=20)
     location = models.CharField(max_length=200)
     school = models.CharField(max_length=200)
     school_logo = models.URLField()
@@ -76,8 +76,8 @@ class Activity(models.Model):
 class Project(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
-    start_date = models.DateField()
-    end_date = models.DateField()
+    start_date = models.CharField(max_length=20)
+    end_date = models.CharField(max_length=20)
     project_url = models.URLField()
 
     def __str__(self):
@@ -90,8 +90,8 @@ class Experience(models.Model):
     company = models.CharField(max_length=200)
     company_logo = models.URLField()
     company_url = models.URLField()
-    start_date = models.DateField()
-    end_date = models.DateField()
+    start_date = models.CharField(max_length=20)
+    end_date = models.CharField(max_length=20)
     location = models.CharField(max_length=200)
 
     def __str__(self):
