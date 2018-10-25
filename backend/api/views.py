@@ -1,15 +1,14 @@
 from django.shortcuts import render
+from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework import viewsets
 
 from .models import *
 
-response = {}
-
 
 # Serve Vue Application
-
+@ensure_csrf_cookie
 def index(request):
-    return render(request, 'index.html', response)
+    return render(request, 'index.html', {})
 
 
 class MessageViewSet(viewsets.ModelViewSet):
