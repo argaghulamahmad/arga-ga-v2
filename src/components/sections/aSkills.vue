@@ -48,7 +48,6 @@ export default {
       .get('/api/skill/')
       .then((response) => {
         this.programmingLanguagesTools = response.data;
-        console.log(this.programmingLanguagesTools);
         this.loading = false;
       })
       .catch((e) => {

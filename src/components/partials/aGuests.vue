@@ -46,7 +46,6 @@
 
                     //remove duplicates by guest email
                     let temp = {};
-                    console.log(this.guests_data);
                     for (let i = 0, len = this.guests_data.length; i < len; i++) {
                         temp[this.guests_data[i].email] = this.guests_data[i];
                     }

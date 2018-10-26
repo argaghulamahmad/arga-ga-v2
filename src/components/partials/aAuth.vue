@@ -101,8 +101,8 @@
                     let csrfToken = getCookie('csrftoken');
                     let headers = {"X-CSRFToken": csrfToken};
 
-                    axios.post('/api/guest/', guest, {headers: headers}).then(function (response) {
-                        console.log(response);
+                    axios.post('/api/guest/', guest, {headers: headers}).then(function () {
+                        console.log("Guest data has been saved successfully!");
                     })
                         .catch(function (error) {
                             console.log(error);
