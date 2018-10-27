@@ -23,9 +23,8 @@
         },
         beforeCreate() {
             let Message = class {
-                constructor(sender_name, sender_email, subject, body, level) {
+                constructor(sender_name, subject, body, level) {
                     this.sender_name = sender_name;
-                    this.sender_email = sender_email;
                     this.subject = subject;
                     this.body = body;
                     this.level = level;
@@ -36,7 +35,7 @@
                 .get('/api/messages/')
                 .then((response) => {
                     response.data.forEach((message) => this.messages.push(new Message(message.sender_name,
-                        message.sender_email, message.subject, message.body, message.level)))
+                        message.subject, message.body, message.level)))
                 })
                 .catch((e) => {
                     console.log(e);
