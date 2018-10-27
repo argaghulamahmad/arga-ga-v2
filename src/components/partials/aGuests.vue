@@ -43,10 +43,10 @@
 
                     this.guests.forEach((guest) => this.guests_data.push(new Guest(createImg(guest.profile_picture), guest.name)));
 
-                    //remove duplicates by guest email
+                    //remove duplicates by guest name
                     let temp = {};
                     for (let i = 0, len = this.guests_data.length; i < len; i++) {
-                        temp[this.guests_data[i].email] = this.guests_data[i];
+                        temp[this.guests_data[i].name] = this.guests_data[i];
                     }
                     this.guests_data = [];
                     for (let key in temp) {
