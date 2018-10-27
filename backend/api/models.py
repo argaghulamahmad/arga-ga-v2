@@ -9,6 +9,7 @@ class Message(models.Model):
     subject = models.CharField(max_length=200)
     body = models.TextField()
     level = models.CharField(max_length=20)
+    received_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return '%s send %s' % (self.sender_name, self.subject)
@@ -124,7 +125,7 @@ class Guest(models.Model):
     visit_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return '%s' % self.name
+        return '%s visit at %s' % (self.name, self.visit_at)
 
 
 class Workflow(models.Model):
