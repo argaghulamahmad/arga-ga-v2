@@ -1,7 +1,7 @@
 <template>
     <div class="guestsContainer p-3 p-lg-5 d-flex flex-column my-auto">
         <h2 class="mb-5">Guests</h2>
-        <b-table :items="guests_data">
+        <b-table stacked :items="guests_data">
             <span slot="profile_picture" slot-scope="data" v-html="data.value">
             </span>
         </b-table>
@@ -26,10 +26,9 @@
         },
         beforeCreate() {
             let Guest = class {
-                constructor(profile_picture, name, email) {
+                constructor(profile_picture, name) {
                     this.profile_picture = profile_picture;
                     this.name = name;
-                    this.email = email;
                 }
             };
 
@@ -42,7 +41,7 @@
                         return '<img src="' + href + '">'
                     }
 
-                    this.guests.forEach((guest) => this.guests_data.push(new Guest(createImg(guest.profile_picture), guest.name, guest.email)))
+                    this.guests.forEach((guest) => this.guests_data.push(new Guest(createImg(guest.profile_picture), guest.name)));
 
                     //remove duplicates by guest email
                     let temp = {};

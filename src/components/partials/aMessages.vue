@@ -1,7 +1,7 @@
 <template>
     <div class="messagesContainer p-3 p-lg-5 d-flex flex-column my-auto">
         <h2 class="mb-5">Messages</h2>
-        <b-table :items="messages">
+        <b-table stacked :items="messages">
         </b-table>
     </div>
 </template>
