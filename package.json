@@ -9,7 +9,7 @@
     "postinstall": "yarn build"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bootstrap-vue": "^2.0.0-rc.11",
     "firebase": "^5.5.5",
     "node-sass": "^4.9.4",
